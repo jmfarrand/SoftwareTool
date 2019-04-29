@@ -2,7 +2,8 @@
 
 This is the repository that contains the source code for the educational software categorisation tool as produced for the Dissertation project at the University of Derby's Computer Science course.
 
-The layout of the repositorty is as follows:
+The layout of the repository is as follows:
+
 ### database commerce3
 This folder contains the PostgreSQL scripts to create the database on commerce3 using PostgreSQL.
 
