@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Error in Inputting software{% endblock %}
+
+{% block body %}
+<h1>There is already information regarding the educational software you have entered.</h1>
+<h1>Editing existing software is not supported right now.</h1>
+<a href="{{ path_for('inputsoftware') }}">Back to input software package</a>
+{% endblock %}

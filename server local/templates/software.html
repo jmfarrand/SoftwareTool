@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}All Educational Software{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+{% endblock %}
+
+{% block body %}
+{{ include('navbar.html') }}
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Software entry</th>
+                <th scope="col">Name of the software</th>
+                <th scope="col">Educational software vendor</th>
+                <th scope="col">My Notes</th>
+        </thead>
+        {% for software in userSoftware %}
+        <tbody>
+            <tr>
+                <th scope="row">{{ software.SoftwareID }}</th>
+                <td>{{ software.NameOfSoftware }}</td>
+                <td>{{ software.SoftwareVendor }}</td>
+                <td>{{ software.NotesOnSoftware }}</td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    <a href="{{ path_for('inputsoftware') }}" class="btn btn-primary">Input a new educational software package</a>
+</div>
+{% endblock %}

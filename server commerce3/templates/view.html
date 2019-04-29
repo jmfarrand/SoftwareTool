@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}View Educational software & student data{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+{% endblock %}
+
+{% block body %}
+{{ include('navbar.html') }}
+<div>
+    <form action="view" method="post" class="needs-validation">
+        <input type="hidden" name="{{ csrf.keys.name }}" value="{{ csrf.name }}">
+        <input type="hidden" name="{{ csrf.keys.value }}" value="{{ csrf.value }}">
+        <div class="form-group">
+            <label for="inputSoftwareUsed">Select Educational Software used:</label>
+            <select class="form-control" id="inputSoftwareUsed" name="inputSoftwareUsed" required>
+                <option selected disabled>Select software used</option>
+                {% for software in allUserSoftware %}
+                <option value="{{ software.softwareid }}">{{ software.nameofsoftware }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">View results</button>
+    </form>
+</div>
+
+<div>
+    {% if sentSoftwareData == 'true' %}
+    <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Teacher last name</th>
+                    <th scope="col">Teacher first name</th>
+                    <th scope="col">Name of the software</th>
+                    <th scope="col">Educational software vendor</th>
+                    <th scope="col">My Notes</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ session.LastName }}</td>
+                    <td>{{ session.FirstName }}</td>
+                    <td>{{ softwareData.nameofsoftware }}</td>
+                    <td>{{ softwareData.softwarevendor }}</td>
+                    <td>{{ softwareData.notesonsoftware }}</td>
+                </tr>
+            </tbody>
+    </table>
+    <br>
+        {% if isStudentData == 'true' %}
+            <h4>Scores:</h4>
+            <table class="table">
+                <thead>
+                        <tr>
+                            <th scope="col">Last name</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Type of test</th>
+                            <th scope="col">Score</th>
+                            <th scope="col">Comments</th>
+                        </tr>
+                </thead>
+                
+                {% for student in softwareStudentData %}
+                <tbody>
+                    <tr>
+                        <td scope="row">{{ student.studentlname }}</td>
+                        <td>{{ student.studentfname }}</td>
+                        <td>{{ student.testtype }}</td>
+                        <td>{{ student.testscore }}</td>
+                        <td>{{ student.studentcomments }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>There isn't any student data for the selected software</p>
+        {% endif %}
+    {% else %}
+    <p>Please select an Educational Software package to view data for in the above form.</p>
+    {% endif %}
+</div>
+{% endblock %}

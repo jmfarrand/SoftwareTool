@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Error in Sign up{% endblock %}
+
+{% block body %}
+<h1>There has been an error in signing up.</h1>
+<h1>Please double check your information and try again.</h1>
+<a href="{{ path_for('signup') }}">Signup</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Login failure{% endblock %}
+
+{% block body %}
+<h1>There has been an error in Logging in.</h1>
+<h1>Please double check your information and try again.</h1>
+<a href="{{ path_for('login') }}">Login</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Input student data{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="css/studentdata.css" />
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+{% endblock %}
+
+{% block body %}
+{{ include('navbar.html') }}
+<div class="container-fluid studentdataform">
+    <form action="inputstudentdata" method="post" class="needs-validation">
+        <input type="hidden" name="{{ csrf.keys.name }}" value="{{ csrf.name }}">
+        <input type="hidden" name="{{ csrf.keys.value }}" value="{{ csrf.value }}">
+
+        <div class="form-group">
+            <label for="inputStudentFName">Student First Name:</label>
+            <input type="text" class="form-control" id="inputStudentFName" name="inputStudentFName" placeholder="Student First Name" required>
+
+            <label for="inputStudentLName">Student Last Name:</label>
+            <input type="text" class="form-control" id="inputStudentLName" name="inputStudentLName" placeholder="Student Last Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputSoftwareUsed">Software used:</label>
+            <select class="form-control" id="inputSoftwareUsed" name="inputSoftwareUsed" required>
+                <option selected disabled>Select software used</option>
+                {% for software in userSoftware %}
+                <option value="{{ software.SoftwareID }}">{{ software.NameOfSoftware }}</option>
+                {% endfor %}
+            </select>
+            <br>
+                
+            <label for="inputTestType">Type of test:</label>
+            <input type="text" class="form-control" id="inputTestType" name="inputTestType" placeholder="Type of test" required>
+
+            <label for="inputTestScore">Test score:</label>
+            <input type="text" class="form-control" id="inputTestScore" name="inputTestScore" placeholder="Test score" required>
+        </div>
+
+        <div class="form-group">
+            <label for="inputStudentComments">Comments by student/on student performance</label>
+            <textarea class="form-control" id="inputStudentComments" name="inputStudentComments" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

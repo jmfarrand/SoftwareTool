@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Input a new Educational Software package{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="css/software.css" />
+<link rel="stylesheet" type="text/css" href="css/navbar.css">
+{% endblock %}
+
+{% block body %}
+{{ include('navbar.html') }}
+<div class="container-fluid softwareform">
+    <a href="{{ path_for('software') }}" class="btn btn-primary">Back</a>
+    
+    <form action="inputsoftware" method="post" class="needs-validation">
+        <input type="hidden" name="{{ csrf.keys.name }}" value="{{ csrf.name }}">
+        <input type="hidden" name="{{ csrf.keys.value }}" value="{{ csrf.value }}">
+
+        <div class="form-group">
+            <label for="inputSoftwareTitle">Software title</label>
+            <input type="text" class="form-control" id="inputSoftwareTitle" name="inputSoftwareTitle" aria-describedby="emailHelp" placeholder="Software title" required>
+        </div>
+        <div class="form-group">
+            <label for="inputSoftwareVendor">Software vendor</label>
+            <input type="text" class="form-control" id="inputSoftwareVendor" name="inputSoftwareVendor" placeholder="Software vendor" required>
+        </div>
+        <div class="form-group">
+            <label for="inputNotes">Comments for educational software package</label>
+            <textarea class="form-control" id="inputNotes" name="inputNotes" placeholder="Comments" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

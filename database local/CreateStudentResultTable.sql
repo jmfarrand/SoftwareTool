@@ -1,0 +1,11 @@
+CREATE TABLE StudentResults(ResultID INT NOT NULL auto_increment,
+SoftwareID INT NOT NULL,
+UserID INT NOT NULL,
+StudentFName VARCHAR(255) NOT NULL,
+StudentLName VARCHAR(255) NOT NULL,
+TestType VARCHAR(255) NOT NULL,
+TestScore VARCHAR(255) NOT NULL,
+StudentComments TEXT,
+CONSTRAINT StudentResults_PK PRIMARY KEY (ResultID),
+CONSTRAINT SoftwareUsed_FK FOREIGN KEY (SoftwareID) REFERENCES EducationalSoftware(SoftwareID),
+CONSTRAINT TeacherOfStudent_FK FOREIGN KEY (UserID) REFERENCES Users(UserID));

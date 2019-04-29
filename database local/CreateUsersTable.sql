@@ -1,0 +1,6 @@
+CREATE TABLE Users(UserID INT NOT NULL auto_increment,
+Username VARCHAR(10) NOT NULL,
+FirstName VARCHAR(255),
+LastName VARCHAR(255),
+PasswordHash VARCHAR(255) NOT NULL,
+CONSTRAINT Users_PK PRIMARY KEY (UserID));
