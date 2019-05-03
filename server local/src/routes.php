@@ -38,7 +38,7 @@ $app->post('/signup', function (Request $request, Response $response, $args) {
     $signupFormData = $request->getParsedBody();
     $username = $signupFormData['username'];
     $firstname = $signupFormData['firstname'];
-    $lastname = $signupFormData['firstname'];
+    $lastname = $signupFormData['lastname'];
     $password = $signupFormData['password'];
 
     $stmtCheckForUser = $this->db->prepare("SELECT * FROM `Users` WHERE `Username` = :Username");
